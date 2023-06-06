@@ -1,7 +1,7 @@
 import React from 'react';
-import Appointment from '../../Components/Appointment/Appointment';
-import Banner from '../../Components/Banner/Banner';
+import HomeBanner from '../../Components/Banners/HomeBanner';
 import InfoCards from '../../Components/InfoCards/InfoCards';
+import MakeAppointment from '../../Components/MakeAppointment/MakeAppointment';
 import Reviews from '../../Components/Reviews/Reviews';
 import Services from '../../Components/Services/Services';
 import Terms from '../../Components/Terms/Terms';
@@ -9,11 +9,11 @@ import Terms from '../../Components/Terms/Terms';
 const Home = () => {
   return (
     <div className="mx-5">
-      <Banner/>
+      <HomeBanner/>
       <InfoCards/>
       <Services/>
       <Terms/>
-      <Appointment/>
+      <MakeAppointment/>
       <Reviews/>
     </div>
   );

@@ -3,9 +3,9 @@ import appointment from '../../../assets/images/appointment.png';
 import scheduleAppointment from '../../../assets/images/schedule-appointment.png';
 import PrimaryButton from '../PrimaryButton/PrimaryButton';
 
-const Appointment = () => {
+const MakeAppointment = () => {
     return (
-      <section className="mt-32" style={{ background: `url(${appointment})`}}>
+      <section className="mt-32" style={{ backgroundImage: `url(${appointment})`}}>
         <div className="hero">
           <div className="hero-content flex-col lg:flex-row">
             <img src={scheduleAppointment} className="-mt-40 hidden md:block lg:w-1/2 rounded-lg bg-transparent" alt="Doctor" />
@@ -21,4 +21,4 @@ const Appointment = () => {
     );
 };
 
-export default Appointment;
+export default MakeAppointment;

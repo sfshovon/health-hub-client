@@ -1,7 +1,7 @@
 import React from 'react';
 import clock from '../../../assets/icons/clock.png';
+import email from '../../../assets/icons/email.png';
 import location from '../../../assets/icons/location.png';
-import phone from '../../../assets/icons/phone.png';
 import InfoCard from './InfoCard';
 
 const InfoCards = () => {
@@ -9,24 +9,24 @@ const InfoCards = () => {
     {
         id: 1,
         name: 'Opening Hours',
-        description: 'Open 9.00 am to 5.00pm everyday',
+        description: 'Everyday 9.00 AM - 5.00 PM',
         icon: clock,
         bgClass: 'bg-gradient-to-r from-primary to-secondary'
     },
     {
-        id: 2,
-        name: 'Our Locations',
-        description: 'Open 9.00 am to 5.00pm everyday',
-        icon: location,
-        bgClass: 'bg-accent'
+      id: 2,
+      name: 'Contact Us',
+      description: 'info@health-hub.com',
+      icon: email,
+      bgClass: 'bg-accent'
     },
     {
         id: 3,
-        name: 'Contact Us',
-        description: 'Open 9.00 am to 5.00pm everyday',
-        icon: phone,
+        name: 'Our Locations',
+        description: '221/B, Baker Street, London',
+        icon: location,
         bgClass: 'bg-gradient-to-r from-primary to-secondary'
-    },
+    }
 ]
 
   return (

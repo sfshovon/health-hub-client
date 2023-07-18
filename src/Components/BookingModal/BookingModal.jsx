@@ -1,9 +1,12 @@
 import { format } from 'date-fns';
-import React from 'react';
+import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
+import { AuthContext } from '../../context/AuthProvider';
 
-const BookingModal = ({  selectedDate, singleAppointment, setSingleAppointment }) => {
+const BookingModal = ({  selectedDate, singleAppointment, setSingleAppointment, refetch }) => {
   const { name, slots } = singleAppointment;
   const date = format(selectedDate, 'PP');
+  const { user } = useContext(AuthContext);
 
   const handleBooking = event => {
     event.preventDefault();
@@ -20,8 +23,25 @@ const BookingModal = ({  selectedDate, singleAppointment, setSingleAppointment }
       email,
       phone,
     }
-    console.log(booking);
-    setSingleAppointment(null);
+    fetch('http://localhost:5000/bookings', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(booking)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if(data.acknowledged) {
+        setSingleAppointment(null);
+        toast.success("Booking Has Been Confirmed")
+        refetch();
+      }
+      else{
+        toast.error(data.message)
+      }
+    })  
   }
 
   return (
@@ -42,8 +62,8 @@ const BookingModal = ({  selectedDate, singleAppointment, setSingleAppointment }
               )
             }
             </select>
-            <input name="name" type="text" placeholder="Your Name" className="input w-full input-bordered" />
-            <input name="email" type="email" placeholder="Email Address" className="input w-full input-bordered" />
+            <input name="name" type="text" disabled defaultValue={user?.displayName} placeholder="Your Name" className="input w-full input-bordered" />
+            <input name="email" type="email" disabled defaultValue={user?.email} placeholder="Email Address" className="input w-full input-bordered" />
             <input name="phone" type="text" placeholder="Phone Number" className="input w-full input-bordered" />
             <br />
             <input className="btn btn-accent w-full" type="submit" value="Submit" />
